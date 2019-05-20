@@ -13,6 +13,7 @@
     "@types/sinon": "^7.0.11",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.1",
+    "express": "^4.17.0",
     "mobx": "^5.9.4",
     "mobx-react": "^5.4.4",
     "node-sass": "^4.12.0",
