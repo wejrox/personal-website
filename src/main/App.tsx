@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../resources/images/logo.svg";
 import "../scss/App.scss";
 import Header from "./core/Header";
-import NavigationBar from "./core/NavigationBar";
+import NavigationBar from "./core/navigation/NavigationBar";
 import MainSection from "./core/MainSection";
 import Footer from "./core/Footer";
 import Container from "reactstrap/lib/Container";

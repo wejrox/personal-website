@@ -11,6 +11,7 @@
     "@types/react-dom": "16.8.4",
     "@types/reactstrap": "^8.0.1",
     "@types/sinon": "^7.0.11",
+    "bootstrap": "^4.3.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.1",
     "express": "^4.17.0",
@@ -23,6 +24,7 @@
     "react-scripts": "3.0.1",
     "reactstrap": "^8.0.0",
     "sinon": "^7.3.2",
+    "tslint": "^5.16.0",
     "typescript": "3.4.5"
   },
   "scripts": {
@@ -30,7 +32,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:server": "CI=true react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start:host-server": "cd target && node server.js",
+    "test:coverage": "react-scripts test --coverage --colors",
+    "lint:output": "tslint -c tslint.json 'src/**/*.{ts,tsx}' -t checkstyle -o tslint_error_log.txt",
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "build:server": "webpack --mode production --config environment/webpack/server/webpack.server.config.js",
+    "build:output": "react-scripts build --json > build_information.json"
   },
   "eslintConfig": {
     "extends": "react-app"

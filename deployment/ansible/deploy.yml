@@ -1,0 +1,94 @@
+##
+# Ansible script for deploying the NodeJS server to the host specified in `hosts`.
+##
+---
+- hosts: personal-website
+  remote_user: james
+  become: true
+  become_method: sudo
+  tasks:
+
+    # Decide whether we need to install NodeJS.
+    # Ignores errors and warnings since they occur when it doesn't exist as is expected.
+    - name: check if nodejs is installed
+      command: rpm -q nodejs
+      register: node_result
+      ignore_errors: True
+      args:
+        warn: False
+
+    # Install NodeJS when it doesn't already exist.
+    - name: Install NodeJS
+      when: node_result.stdout.find('is not installed') != -1
+      block:
+
+        # Download a script that will point to the correct repository when executed.
+        # An external repository for NodeJS is required as Yum doesn't have the package by default.
+        - name: download the NodeJS repository location script
+          get_url: url=https://rpm.nodesource.com/setup_8.x dest=/tmp/install.sh
+
+        # Add the repository to the Yum repository locations available.
+        - name: execute the NodeJS repository location script
+          command: /bin/bash /tmp/install.sh
+
+        # Install NodeJS (installs from repository provided).
+        - name: install nodejs
+          yum:
+            name: nodejs
+            state: latest
+
+    # Open the port that the service is running on.
+    - name: open port in the firewall
+      firewalld:
+
+        # Port that the server is running on.
+        port: 80/tcp
+        zone: public
+        state: enabled
+        permanent: yes
+        immediate: yes
+
+    # Firewall must be restarted for the changes to take effect.
+    - name: restart the firewall
+      command: sudo firewall-cmd --reload
+
+    # Discover whether the service is already set up.
+    - name: check that personal_website.service exists
+      stat:
+        path: /etc/systemd/system/personal_website.service
+      register: service_exists
+
+    # Add the web server NodeJS service definition to be run on boot if it doesn't exist.
+    - name: copy the systemd file to the host machine
+      when: service_exists.stat.exists == False
+      copy:
+        src: ./personal_website.service
+        dest: /etc/systemd/system/
+
+    # Copy across the server zip from the current machine to the host machine.
+    - name: copy server files to the host machine
+      copy:
+        src: ../target.tar.gz
+        dest: /opt/personal-website/
+
+    # Delete the previous server version (if it exists).
+    - name: remove old target
+      file:
+        path: /opt/personal-website/target
+        state: absent
+
+    # Decompress the server.
+    - name: unzip target
+      unarchive:
+        src: /opt/personal-website/target.tar.gz
+        dest: /opt/personal-website
+        remote_src: yes
+
+    # Make sure the server is set to start when the host is booted/started.
+    - name: enable server to start on reboot
+      when: service_exists.stat.exists == False
+      command: systemctl enable personal_website.service
+
+    # Restart the server, which also starts it if it isn't already running.
+    - name: restart server
+      command: systemctl restart personal_website.service

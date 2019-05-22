@@ -1,0 +1,3 @@
+# Register an alias for an ip-address or domain name to be used by the Ansible deployment script.
+[personal-website]
+jamesmcdowell.dev

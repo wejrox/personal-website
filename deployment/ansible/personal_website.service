@@ -1,0 +1,14 @@
+# Systemd file used for deploying the project to Unix based systems.
+
+[Unit]
+Description=Personal website
+
+[Service]
+Type=idle
+User=root
+WorkingDirectory=/opt/personal-website/target
+ExecStart=/usr/bin/node /opt/personal-website/target/server.js
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

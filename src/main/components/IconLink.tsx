@@ -1,20 +1,19 @@
 import * as React from "react";
-import Icons, {Icon} from "../Icons";
 
 interface IconLinkProps {
     link: string;
-    icon: Icon;
+    icon: JSX.Element;
 }
 
 class IconLink extends React.Component<IconLinkProps> {
 
     public render() {
         return (
-            <div>
+            <span className={"pr-2"}>
                 <a href={this.props.link}>
-                    {Icons.RenderIcon(this.props.icon)}
+                    {this.props.icon}
                 </a>
-            </div>
+            </span>
         );
     }
 }
