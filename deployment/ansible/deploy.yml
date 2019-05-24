@@ -37,12 +37,23 @@
             name: nodejs
             state: latest
 
-    # Open the port that the service is running on.
-    - name: open port in the firewall
+    # Open the standard port.
+    - name: open port 80 in the firewall
       firewalld:
 
         # Port that the server is running on.
         port: 80/tcp
+        zone: public
+        state: enabled
+        permanent: yes
+        immediate: yes
+
+    # Open the SSL port.
+    - name: open port 443 in the firewall
+      firewalld:
+
+        # Port that the server is running on.
+        port: 443/tcp
         zone: public
         state: enabled
         permanent: yes

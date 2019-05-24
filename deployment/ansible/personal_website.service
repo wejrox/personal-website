@@ -6,8 +6,8 @@ Description=Personal website
 [Service]
 Type=idle
 User=root
-WorkingDirectory=/opt/personal-website/target
-ExecStart=/usr/bin/node /opt/personal-website/target/server.js
+WorkingDirectory=/opt/personal-website/build
+ExecStart=/usr/bin/node /opt/personal-website/environment/server/server.js
 Restart=on-abort
 
 [Install]
