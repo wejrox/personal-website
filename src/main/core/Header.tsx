@@ -5,6 +5,9 @@ import { FaLinkedin } from "react-icons/fa";
 import IconLink from "../components/IconLink";
 import Col from "reactstrap/lib/Col";
 
+/**
+ * Header located at the top of the page, fixed.
+ */
 class Header extends React.Component {
 
     public render() {

@@ -1,11 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from '../main/App';
+import React from "react";
+import * as Enzyme from "enzyme";
+import App from "../main/App";
 
 describe("App Component", () => {
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
-    ReactDOM.unmountComponentAtNode(div);
-  });
+    const wrapper = Enzyme.shallow(<App/>);
+
+    it("renders without crashing", () => {
+        expect(wrapper).toMatchSnapshot();
+    });
 });

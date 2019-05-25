@@ -31,17 +31,22 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:update": "react-scripts test -u",
     "test:server": "CI=true react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "start:host-server": "cd target && node server.js",
     "test:coverage": "react-scripts test --coverage --colors",
-    "lint:output": "tslint -c tslint.json 'src/**/*.{ts,tsx}' -t checkstyle -o tslint_error_log.txt",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
-    "build:server": "webpack --mode production --config environment/webpack/server/webpack.server.config.js",
-    "build:output": "react-scripts build --json > build_information.json"
+    "lint:output": "tslint -c tslint.json 'src/**/*.{ts,tsx}' -t checkstyle -o tslint_error_log.txt"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "functions": 80,
+        "lines": 80
+      }
+    }
   },
   "browserslist": {
     "production": [

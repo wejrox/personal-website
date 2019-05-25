@@ -3,11 +3,18 @@ import Col from "reactstrap/lib/Col";
 import { PossiblePages, websiteStore } from "../../stores/WebsiteStore";
 import { observer } from "mobx-react";
 
+/**
+ * @property {string} text  Text that is displayed.
+ * @property {PossiblePages} destination  Page the user should be shown when they click the entry.
+ */
 interface INavigationEntryProps {
     text: string;
     destination: PossiblePages;
 }
 
+/**
+ * A selectable Bootstrap column which sets the users desired page upon click.
+ */
 @observer
 class NavigationEntry extends React.Component<INavigationEntryProps> {
     constructor(props: INavigationEntryProps) {
@@ -26,6 +33,9 @@ class NavigationEntry extends React.Component<INavigationEntryProps> {
         );
     }
 
+    /**
+     * Sets the current page in the website store.
+     */
     public processNavigationClick() {
         websiteStore.changePage(this.props.destination);
     }

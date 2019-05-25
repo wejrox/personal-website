@@ -1,1 +1,65 @@
-{}
+{
+  "defaultSeverity": "error",
+  "extends": "tslint:recommended",
+  "rulesDirectory": [],
+  "rules": {
+    "max-line-length": {
+      "options": [
+        120
+      ]
+    },
+    "no-console": {
+      "severity": "warning",
+      "options": [
+        "debug",
+        "info",
+        "log",
+        "time",
+        "timeEnd",
+        "trace"
+      ]
+    },
+    "comment-type": [
+      true,
+      "doc",
+      "singleline"
+    ],
+    "comment-format": [
+      true,
+      "check-space",
+      "check-uppercase"
+    ],
+    "whitespace": [
+      false
+    ],
+    "ordered-imports": false,
+    "semicolon": [
+      true,
+      "always",
+      "ignore-interfaces"
+    ],
+    "member-ordering": [
+      true,
+      {
+        "order": "fields-first"
+      }
+    ]
+  },
+  "jsRules": {
+    "max-line-length": {
+      "options": [
+        120
+      ]
+    }
+  },
+  "linterOptions": {
+    "exclude": [
+      "bin",
+      "build",
+      "config",
+      "coverage",
+      "node_modules",
+      "src/tests"
+    ]
+  }
+}

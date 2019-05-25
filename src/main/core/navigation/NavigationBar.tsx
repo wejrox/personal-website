@@ -4,6 +4,9 @@ import NavigationEntry from "./NavigationEntry";
 import { PossiblePages } from "../../stores/WebsiteStore";
 import { FiMinus } from "react-icons/fi";
 
+/**
+ * Navigation bar fixed to the top of the page which disappears on scroll down and reappears on scroll up.
+ */
 class NavigationBar extends React.Component {
 
     public render() {

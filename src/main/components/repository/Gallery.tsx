@@ -2,11 +2,14 @@ import * as React from "react";
 import Row from "reactstrap/lib/Row";
 import Col from "reactstrap/lib/Col";
 
-interface GalleryProps {
-
+interface IGalleryProps {
+    galleryEntries?: string[];
 }
 
-class Gallery extends React.Component<GalleryProps> {
+/**
+ * A gallery slideshow showing details of repositories.
+ */
+class Gallery extends React.Component<IGalleryProps> {
 
     public render() {
         return (
