@@ -30,12 +30,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "test:update": "react-scripts test -u",
-    "test:server": "CI=true react-scripts test --env=jsdom",
-    "test:coverage": "react-scripts test --coverage --colors",
+    "test": "react-scripts test --env=node",
+    "test:update": "npm run test -- -u",
+    "test:server": "npm run test -- CI=true",
+    "test:coverage": "npm run test -- --coverage --colors",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
-    "lint:output": "tslint -c tslint.json 'src/**/*.{ts,tsx}' -t checkstyle -o tslint_error_log.txt"
+    "lint:output": "npm run lint -- -t checkstyle -o tslint_error_log.txt"
   },
   "eslintConfig": {
     "extends": "react-app"
