@@ -1,17 +1,19 @@
 import * as React from "react";
-import { Button, Col, Form, FormFeedback, FormGroup, Input, Label, Row } from "reactstrap";
+import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 
 /**
- * @property {string} firstName  (Optional) First name of the person submitting the form.
- * @property {string} lastName   (Optional) Last name/Surname of the person submitting the form.
- * @property {string} email      EMail address of the person submitting the form.
- * @property {string} message    Message to be sent to the database.
+ * @property {string} firstName   (Optional) First name of the person submitting the form.
+ * @property {string} lastName    (Optional) Last name/Surname of the person submitting the form.
+ * @property {string} email       EMail address of the person submitting the form.
+ * @property {string} message     Message to be sent to the database.
+ * @property {boolean} submitted  Whether or not the user has successfully submitted.
  */
 interface IContactFormState {
     firstName: string;
     lastName: string;
     email: string;
     message: string;
+    submitted: boolean;
 }
 
 /**
@@ -22,7 +24,7 @@ interface IContactFormState {
 class ContactForm extends React.Component<{}, IContactFormState> {
     constructor(props: {}) {
         super(props);
-        this.state = {firstName: "", lastName: "", email: "", message: ""};
+        this.state = {firstName: "", lastName: "", email: "", message: "", submitted: false};
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -55,9 +57,13 @@ class ContactForm extends React.Component<{}, IContactFormState> {
                     <Label for={"message"}>Message</Label>
                     <Input required type={"textarea"} name={"message"} id={"message"}
                            onChange={(e) => this.setState({message: e.target.value})}/>
-                    <FormFeedback hidden={false}>Don't forget to input a message for me!</FormFeedback>
                 </FormGroup>
-                <Button type={"submit"} id={"submit"}>Send</Button>
+                {this.state.submitted &&
+                <div className={"d-flex pb-3 success-message justify-content-center"}>
+                    Message sent.
+                </div>
+                }
+                <Button type={"submit"} id={"submit"} className={"btn-block"}>Send</Button>
             </Form>
         );
     }
@@ -73,6 +79,7 @@ class ContactForm extends React.Component<{}, IContactFormState> {
 
         // Prevent page refresh.
         event.preventDefault();
+        this.setState({submitted: true});
         console.log(this.state.message);
     }
 }

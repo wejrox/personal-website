@@ -16,6 +16,10 @@
   }
 }
 
+.nav-link {
+  width: 100%;
+}
+
 // Remove the red box shadow in forms when they're required.
 // QoL change to prevent the shadow from appearing before users have entered anything.
 input:required, textarea:required {

@@ -57,4 +57,10 @@
   left: calc(100vw - 80px - 10px);
   width: 80px;
   bottom: 50px;
+  z-index: 5000;
+}
+
+.repo-card {
+  max-width: 15rem;
+  margin: 1rem;
 }

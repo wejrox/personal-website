@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import Landing from "../../pages/Landing";
 import Projects from "../../pages/Projects";
 import Contact from "../../pages/Contact";
+import { isMobile } from "react-device-detect";
 
 /**
  * @property {boolean} isOpen  Whether or not the navigation bar is open.
@@ -26,20 +27,22 @@ class NavigationBar extends React.Component<{}, INavigationBarState> {
     public render() {
         return (
             <Router>
-                <Navbar color="light" light fixed={"top"} expand={"md"}>
+                <Navbar color="light" light fixed={"top"} expand={"md"} className={(isMobile ? "py-3" : "")}>
                     <Container>
-                        <Link to={"/"} className={"navbar-brand"}>James McDowell</Link>
-                        <NavbarToggler onClick={this.toggle}/>
+                        <Link to={"/"} className={"navbar-brand px-3"}>James McDowell</Link>
+                        <NavbarToggler onClick={this.toggle} className={"mx-3"}/>
                         <Collapse isOpen={this.state.isOpen} navbar className={"justify-content-end"}>
                             <Nav navbar vertical={false}>
-                                <NavItem className={"d-flex justify-content-center"}>
-                                    <Link className={"nav-link"} to={"/"}>Home</Link>
+                                <NavItem onClick={this.toggle}>
+                                    <Link className={"d-flex justify-content-center nav-link"} to={"/"}>Home</Link>
                                 </NavItem>
-                                <NavItem className={"d-flex justify-content-center"}>
-                                    <Link className={"nav-link"} to={"/projects/"}>Projects</Link>
+                                <NavItem onClick={this.toggle}>
+                                    <Link className={"d-flex justify-content-center nav-link"}
+                                          to={"/projects/"}>Projects</Link>
                                 </NavItem>
-                                <NavItem className={"d-flex justify-content-center"}>
-                                    <Link className={"nav-link"} to={"/contact/"}>Contact</Link>
+                                <NavItem onClick={this.toggle}>
+                                    <Link className={"d-flex justify-content-center nav-link"}
+                                          to={"/contact/"}>Contact</Link>
                                 </NavItem>
                             </Nav>
                         </Collapse>

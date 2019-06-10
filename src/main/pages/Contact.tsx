@@ -5,35 +5,33 @@ import ContactForm from "../components/ContactForm";
 class Contact extends React.Component {
     public render() {
         return (
-            <>
+            <Container className={"pb-3"}>
                 <div className={"navbar-compensation"}/>
-                <Container className={"pb-3"}>
-                    <Row className={"mb-4"}>
-                        <Col className={"d-flex justify-content-center"}>
-                            <h1>Contact</h1>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col className={"mb-3"}>
-                            <Row className={"pb-3"}>
-                                <Col>
-                                    <h2>Get in touch</h2>
-                                </Col>
-                            </Row>
-                            {this.generateRow("Phone", "+61 401 939 576")}
-                            {this.generateRow("Email", "james.mcdowell001@gmail.com")}
-                        </Col>
-                        <Col className={"mb-3"}>
-                            <Row className={"d-flex justify-content-center pb-3"}>
-                                <h2>Send me a message</h2>
-                            </Row>
-                            <Row className={"d-flex justify-content-center"}>
-                                <ContactForm/>
-                            </Row>
-                        </Col>
-                    </Row>
-                </Container>
-            </>
+                <Row className={"mb-4"}>
+                    <Col className={"d-flex justify-content-center"}>
+                        <h1>Contact</h1>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col s={12} md={6} className={"mb-3"}>
+                        <Row className={"pb-3"}>
+                            <Col>
+                                <h2>Get in touch</h2>
+                            </Col>
+                        </Row>
+                        {this.generateRow("Phone", "+61 401 939 576")}
+                        {this.generateRow("Email", "james.mcdowell001@gmail.com")}
+                    </Col>
+                    <Col className={"mb-3"}>
+                        <Row className={"d-flex justify-content-center px-3 pb-3"}>
+                            <h2>Send me a message</h2>
+                        </Row>
+                        <Row className={"d-flex justify-content-center px-3"}>
+                            <ContactForm/>
+                        </Row>
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 
