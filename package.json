@@ -34,7 +34,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=node",
     "test:update": "npm run test -- -u",
-    "test:server": "npm run test -- CI=true",
+    "test:server": "CI=true npm run test -- --passWithNoTests",
     "test:coverage": "npm run test -- --coverage --colors",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
     "lint:output": "npm run lint -- -t checkstyle -o tslint_error_log.txt"
