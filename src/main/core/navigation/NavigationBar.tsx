@@ -61,7 +61,9 @@ class NavigationBar extends React.Component<{}, INavigationBarState> {
      * Toggles whether or not the navbar is open (mobile).
      */
     public toggle() {
-        this.setState({isOpen: !this.state.isOpen});
+        if (isMobile) {
+            this.setState({isOpen: !this.state.isOpen});
+        }
     }
 }
 
