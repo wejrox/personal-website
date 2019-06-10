@@ -8,4 +8,12 @@ describe("NavigationBar Component", () => {
     it("renders correctly", () => {
         expect(wrapper).toMatchSnapshot();
     });
+
+    it("toggles open state", () => {
+        const prvOpenState: boolean = (wrapper.instance() as NavigationBar).state.isOpen;
+        (wrapper.instance() as NavigationBar).toggle();
+
+        expect((wrapper.instance() as NavigationBar).state.isOpen).toBe(!prvOpenState);
+    });
+
 });

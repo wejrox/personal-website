@@ -1,0 +1,23 @@
+// Add 1px padding so the border is still inside the navbar, and retain horizontal spacing.
+.navbar {
+  padding: 0 !important;
+  width: 100vw !important;
+}
+
+.nav-item {
+  cursor: default !important;
+  user-select: none !important;
+  border-bottom: 2px solid rgba(97, 218, 251, 0) !important;
+  transition: 500ms ease;
+
+  &:hover {
+    border-bottom: 2px solid rgba(97, 218, 251, 1) !important;
+
+  }
+}
+
+// Remove the red box shadow in forms when they're required.
+// QoL change to prevent the shadow from appearing before users have entered anything.
+input:required, textarea:required {
+  box-shadow: none;
+}
