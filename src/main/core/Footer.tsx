@@ -7,7 +7,7 @@ class Footer extends React.Component {
     public render() {
         return (
             <div className={"p-2 footer"}>
-                © 2019 James McDowell, Software Engineer Melbourne, Vic, Australia.
+                © 2019 James McDowell, Software Engineer in Melbourne, Vic, Australia.
             </div>
         );
     }

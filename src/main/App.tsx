@@ -10,7 +10,6 @@ class App extends React.Component {
             <>
                 <FloatingExternalLinks/>
                 <NavigationBar/>
-                <div className={"navbar-compensation"}/>
                 <Footer/>
             </>
         );

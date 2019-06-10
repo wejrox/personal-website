@@ -33,7 +33,6 @@ class Contact extends React.Component {
                         </Col>
                     </Row>
                 </Container>
-                <div className={"navbar-compensation"}/>
             </>
         );
     }
