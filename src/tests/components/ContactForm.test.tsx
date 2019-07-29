@@ -1,6 +1,6 @@
 import React from "react";
 import * as Enzyme from "enzyme";
-import ContactForm from "../../main/components/ContactForm";
+import ContactForm from "../../main/components/contact/ContactForm";
 
 describe("ContactForm Component", () => {
     const wrapper = Enzyme.shallow(<ContactForm/>);

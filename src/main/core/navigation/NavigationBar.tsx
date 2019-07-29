@@ -5,21 +5,20 @@ import Landing from "../../pages/Landing";
 import Projects from "../../pages/Projects";
 import Contact from "../../pages/Contact";
 import { isMobile } from "react-device-detect";
-
-/**
- * @property {boolean} isOpen  Whether or not the navigation bar is open.
- */
-interface INavigationBarState {
-    isOpen: boolean;
-}
+import { observer } from "mobx-react";
+import { observable } from "mobx";
 
 /**
  * Navigation bar fixed to the top of the page which remains visible as the user scrolls.
  */
-class NavigationBar extends React.Component<{}, INavigationBarState> {
+@observer
+class NavigationBar extends React.Component {
+
+    // Whether or not the navigation bar is open.
+    @observable private isOpen: boolean = false;
+
     constructor(props: object) {
         super(props);
-        this.state = {isOpen: false};
 
         this.toggle = this.toggle.bind(this);
     }
@@ -31,7 +30,7 @@ class NavigationBar extends React.Component<{}, INavigationBarState> {
                     <Container>
                         <Link to={"/"} className={"navbar-brand px-3"}>James McDowell</Link>
                         <NavbarToggler onClick={this.toggle} className={"mx-3"}/>
-                        <Collapse isOpen={this.state.isOpen} navbar className={"justify-content-end"}>
+                        <Collapse isOpen={this.isOpen} navbar className={"justify-content-end"}>
                             <Nav navbar vertical={false}>
                                 <NavItem onClick={this.toggle}>
                                     <Link className={"d-flex justify-content-center nav-link"} to={"/"}>Home</Link>
@@ -62,7 +61,7 @@ class NavigationBar extends React.Component<{}, INavigationBarState> {
      */
     public toggle() {
         if (isMobile) {
-            this.setState({isOpen: !this.state.isOpen});
+            this.isOpen = !this.isOpen;
         }
     }
 }

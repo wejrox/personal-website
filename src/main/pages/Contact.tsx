@@ -1,7 +1,11 @@
 import * as React from "react";
 import { Col, Container, Row } from "reactstrap";
-import ContactForm from "../components/ContactForm";
+import ContactForm from "../components/contact/ContactForm";
+import ContactInfoRow from "../components/contact/ContactInfoRow";
 
+/**
+ * Renders a page which contains contact details on the left and a contact form on the right.
+ */
 class Contact extends React.Component {
     public render() {
         return (
@@ -19,8 +23,8 @@ class Contact extends React.Component {
                                 <h2>Get in touch</h2>
                             </Col>
                         </Row>
-                        {this.generateRow("Phone", "+61 401 939 576")}
-                        {this.generateRow("Email", "james.mcdowell001@gmail.com")}
+                        <ContactInfoRow title={"Phone"} contents={"+61 401 939 576"}/>
+                        <ContactInfoRow title={"Email"} contents={"james.mcdowell001@gmail.com"}/>
                     </Col>
                     <Col className={"mb-3"}>
                         <Row className={"d-flex justify-content-center px-3 pb-3"}>
@@ -32,24 +36,6 @@ class Contact extends React.Component {
                     </Col>
                 </Row>
             </Container>
-        );
-    }
-
-    /**
-     * Generates a row of information in the format 'title: contents'
-     * @param title     Word describing the contents.
-     * @param contents  Value to be displayed.
-     */
-    public generateRow(title: string, contents: string) {
-        return (
-            <Row>
-                <Col sm={3} md={2}>
-                    <b>{title}: </b>
-                </Col>
-                <Col>
-                    {contents}
-                </Col>
-            </Row>
         );
     }
 }

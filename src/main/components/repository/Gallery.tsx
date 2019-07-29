@@ -1,6 +1,9 @@
 import * as React from "react";
 import RepositoryCard from "./RepositoryCard";
 import { Row } from "reactstrap";
+import RepositoryApi from "../../repositoryApi/RepositoryApi";
+import { IRepository } from "../../repositoryApi/RepositoryTypes";
+import { observer } from "mobx-react";
 
 interface IGalleryProps {
     galleryEntries?: string[];
@@ -9,28 +12,29 @@ interface IGalleryProps {
 /**
  * A gallery slideshow showing details of repositories.
  */
+@observer
 class Gallery extends React.Component<IGalleryProps> {
 
     public render() {
         return (
             <Row className={"pl-3 justify-content-center"}>
-                {this.renderCard()}
-                {this.renderCard()}
-                {this.renderCard()}
-                {this.renderCard()}
-                {this.renderCard()}
+                {this.renderCards()}
             </Row>
         );
     }
 
-    private renderCard(): JSX.Element {
-        return (
-            <RepositoryCard id={"asdf"} title={"A card"} url={"https://www.google.com"}
-                            shortDescription={"This is a repository."}
-                            longDescription={"This is a long description of a repository."}
-                            image={"https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg" +
-                            "?auto=format%2Ccompress&cs=tinysrgb&dpr=1&w=500"}/>
-        );
+    /**
+     * Renders a generic card. Will eventually render based on database contents.
+     */
+    private renderCards(): JSX.Element[] {
+        if (!RepositoryApi || RepositoryApi.currentRepositories.length === 0) {
+            return [];
+        }
+
+        return RepositoryApi.currentRepositories.map((repository: IRepository) => {
+            return <RepositoryCard id={"" + repository.id} title={repository.name} url={repository.html_url}
+                                   shortDescription={repository.description} longDescription={""} image={""}/>;
+        });
     }
 }
 

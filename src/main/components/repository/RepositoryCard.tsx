@@ -6,7 +6,8 @@ import CardText from "reactstrap/lib/CardText";
 import CardLink from "reactstrap/lib/CardLink";
 import IconLink from "../IconLink";
 import { GoRepo } from "react-icons/go";
-import { Col, Row } from "reactstrap";
+import { CardSubtitle, Col, Row } from "reactstrap";
+import { Link } from "react-router-dom";
 
 /**
  * @property {string} id                ID of the repository in the database.
@@ -37,7 +38,7 @@ class RepositoryCard extends React.Component<IRepositoryCardProps> {
                         <Col>
                             <CardTitle className={"float-left"}>{this.props.title}</CardTitle>
                         </Col>
-                        <Col>
+                        <Col xs={1}>
                             <CardLink className={"float-right"}>
                                 <IconLink link={this.props.url} icon={<GoRepo size={24}/>}/>
                             </CardLink>
@@ -45,6 +46,16 @@ class RepositoryCard extends React.Component<IRepositoryCardProps> {
                     </Row>
                 </CardBody>
                 <img width={"100%"} src={this.props.image} alt={"Project screenshot"}/>
+                <CardSubtitle className={"m-2"}>
+                    <Link to={"/projects/" + this.props.id} className={"p-1 ml-2 float-right border rounded"}>
+                        <GoRepo size={24}/>
+                        A link
+                    </Link>
+                    <Link to={"/projects/" + this.props.id} className={"p-1 ml-2 float-right border rounded"}>
+                        <GoRepo size={24}/>
+                        A link
+                    </Link>
+                </CardSubtitle>
                 <CardBody>
                     <CardText>{this.props.shortDescription}</CardText>
                 </CardBody>

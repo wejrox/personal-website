@@ -19,5 +19,4 @@ describe("NavigationBar Component", () => {
         expect(toggleSpy.called).toBe(true);
         expect((wrapper.instance() as NavigationBar).state.isOpen).toBe(prvOpenState);
     });
-
 });
