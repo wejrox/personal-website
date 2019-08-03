@@ -6,6 +6,7 @@ import Row from "reactstrap/lib/Row";
 import Col from "reactstrap/lib/Col";
 import { action, observable } from "mobx";
 import { observer } from "mobx-react";
+import ReactMarkdown from "react-markdown";
 
 /**
  * Holds a definition for the parameters to expect when this component is routed to.
@@ -54,7 +55,8 @@ class ProjectBlog extends React.Component<IProjectBlogProps> {
                     </Col>
                 </Row>
                 <Row>
-                    <p>Rundown: {this.projectRundown}</p>
+                    <p>Rundown:</p>
+                    <ReactMarkdown source={this.projectRundown}/>
                 </Row>
             </Container>
         );
