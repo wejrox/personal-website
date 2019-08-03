@@ -53,7 +53,7 @@ class NavigationBar extends React.Component {
 
                 <Route exact path={"/"} component={Landing}/>
                 <Route exact path={"/projects/"} component={Projects}/>
-                <Route exact path={"/projects/:id"} component={ProjectBlog}/>
+                <Route exact path={"/projects/:name"} component={ProjectBlog}/>
                 <Route exact path={"/contact/"} component={Contact}/>
             </Router>
         );

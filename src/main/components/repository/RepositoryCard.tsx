@@ -31,7 +31,8 @@ interface IRepositoryCardProps {
  */
 class RepositoryCard extends React.Component<IRepositoryCardProps> {
     private image: string =
-        "https://raw.githubusercontent.com/wejrox/" + this.props.name + "/master/project-details/screenshot.png";
+        `https://raw.githubusercontent.com/wejrox/${this.props.name}
+        /master/project-details/screenshot.png`;
 
     public render() {
         return (
@@ -51,7 +52,8 @@ class RepositoryCard extends React.Component<IRepositoryCardProps> {
                 <img className={"shadow-sm"} width={"100%"} src={this.image}
                      alt={this.props.name + " project screenshot"}/>
                 <CardSubtitle className={"m-2"}>
-                    <Link to={"/projects/" + this.props.id} className={"p-1 ml-2 float-right border rounded"}>
+                    <Link to={`/projects/${this.props.name}`}
+                          className={"p-1 ml-2 float-right border rounded"}>
                         <GoRepo size={24}/>
                         A link
                     </Link>
