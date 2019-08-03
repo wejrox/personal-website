@@ -36,7 +36,7 @@ interface IProjectBlogProps extends RouteComponentProps<IMatchParams> {
 class ProjectBlog extends React.Component<IProjectBlogProps> {
     private rundownUrl: string =
         `https://raw.githubusercontent.com/wejrox/${this.props.match.params.name}
-        /master/project-details/project-rundown.txt`;
+        /master/project-details/project-rundown.md`;
     @observable
     private projectRundown: string = "";
 
@@ -55,7 +55,6 @@ class ProjectBlog extends React.Component<IProjectBlogProps> {
                     </Col>
                 </Row>
                 <Row>
-                    <p>Rundown:</p>
                     <ReactMarkdown source={this.projectRundown}/>
                 </Row>
             </Container>
