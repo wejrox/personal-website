@@ -12,7 +12,7 @@ interface IContactInfoRowProps {
 }
 
 /**
- * Generates a row of information in the format 'title: contents'.
+ * Generates a row of information in the format 'name: contents'.
  */
 class ContactInfoRow extends React.Component<IContactInfoRowProps> {
     public render() {

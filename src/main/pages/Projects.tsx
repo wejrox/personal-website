@@ -3,8 +3,14 @@ import Container from "reactstrap/lib/Container";
 import Row from "reactstrap/lib/Row";
 import Col from "reactstrap/lib/Col";
 import Gallery from "../components/repository/Gallery";
+import { observer } from "mobx-react";
+import { action, observable } from "mobx";
 
+@observer
 class Projects extends React.Component {
+    @observable
+    private projectRundown: string = "";
+
     public render() {
         return (
             <>
@@ -19,6 +25,11 @@ class Projects extends React.Component {
                 <Gallery/>
             </>
         );
+    }
+
+    @action
+    private async getRepoDetails() {
+
     }
 }
 

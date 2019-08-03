@@ -7,6 +7,7 @@ import Contact from "../../pages/Contact";
 import { isMobile } from "react-device-detect";
 import { observer } from "mobx-react";
 import { observable } from "mobx";
+import ProjectBlog from "../../pages/ProjectBlog";
 
 /**
  * Navigation bar fixed to the top of the page which remains visible as the user scrolls.
@@ -26,7 +27,8 @@ class NavigationBar extends React.Component {
     public render() {
         return (
             <Router>
-                <Navbar color="light" light fixed={"top"} expand={"md"} className={(isMobile ? "py-3" : "")}>
+                <Navbar color="light" light fixed={"top"} expand={"md"}
+                        className={"shadow-sm" + (isMobile ? "py-3" : "")}>
                     <Container>
                         <Link to={"/"} className={"navbar-brand px-3"}>James McDowell</Link>
                         <NavbarToggler onClick={this.toggle} className={"mx-3"}/>
@@ -49,9 +51,10 @@ class NavigationBar extends React.Component {
                 </Navbar>
                 <div className={"navbar-compensation"}/>
 
-                <Route path={"/"} exact component={Landing}/>
-                <Route path={"/projects/"} component={Projects}/>
-                <Route path={"/contact/"} component={Contact}/>
+                <Route exact path={"/"} component={Landing}/>
+                <Route exact path={"/projects/"} component={Projects}/>
+                <Route exact path={"/projects/:id"} component={ProjectBlog}/>
+                <Route exact path={"/contact/"} component={Contact}/>
             </Router>
         );
     }

@@ -14,7 +14,6 @@ interface IGalleryProps {
  */
 @observer
 class Gallery extends React.Component<IGalleryProps> {
-
     public render() {
         return (
             <Row className={"pl-3 justify-content-center"}>
@@ -32,8 +31,10 @@ class Gallery extends React.Component<IGalleryProps> {
         }
 
         return RepositoryApi.currentRepositories.map((repository: IRepository) => {
-            return <RepositoryCard id={"" + repository.id} title={repository.name} url={repository.html_url}
-                                   shortDescription={repository.description} longDescription={""} image={""}/>;
+            return <RepositoryCard key={repository.id} id={"" + repository.id} name={repository.name}
+                                   repoUrl={repository.html_url} cloneUrl={repository.clone_url}
+                                   language={repository.language}
+                                   shortDescription={repository.description} longDescription={""}/>;
         });
     }
 }

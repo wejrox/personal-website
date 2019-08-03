@@ -25,7 +25,7 @@
         # Download a script that will point to the correct repository when executed.
         # An external repository for NodeJS is required as Yum doesn't have the package by default.
         - name: download the NodeJS repository location script
-          get_url: url=https://rpm.nodesource.com/setup_8.x dest=/tmp/install.sh
+          get_url: repoUrl=https://rpm.nodesource.com/setup_8.x dest=/tmp/install.sh
 
         # Add the repository to the Yum repository locations available.
         - name: execute the NodeJS repository location script
