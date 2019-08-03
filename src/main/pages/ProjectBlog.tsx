@@ -35,10 +35,14 @@ interface IProjectBlogProps extends RouteComponentProps<IMatchParams> {
 class ProjectBlog extends React.Component<IProjectBlogProps> {
     private rundownUrl: string =
         `https://raw.githubusercontent.com/wejrox/${this.props.match.params.name}
-        /master/project-details/screenshot.png`;
-
+        /master/project-details/project-rundown.txt`;
     @observable
     private projectRundown: string = "";
+
+    constructor(props: IProjectBlogProps) {
+        super(props);
+        this.getProjectRundown();
+    }
 
     public render() {
         return (
@@ -58,7 +62,9 @@ class ProjectBlog extends React.Component<IProjectBlogProps> {
 
     @action
     private async getProjectRundown() {
-        this.projectRundown = await axios.get(this.rundownUrl).then((promise) => promise.data);
+        this.projectRundown = await axios.get(this.rundownUrl).then((promise) => promise.data).catch((reason) => {
+            throw new Error(reason);
+        });
     }
 }
 
