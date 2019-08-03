@@ -1,12 +1,12 @@
 import * as React from "react";
-import axios from "axios";
 import { RouteComponentProps } from "react-router-dom";
 import Container from "reactstrap/lib/Container";
 import Row from "reactstrap/lib/Row";
 import Col from "reactstrap/lib/Col";
-import { action, observable } from "mobx";
+import { observable } from "mobx";
 import { observer } from "mobx-react";
 import ReactMarkdown from "react-markdown";
+import RepositoryApi from "../repositoryApi/RepositoryApi";
 
 /**
  * Holds a definition for the parameters to expect when this component is routed to.
@@ -34,15 +34,13 @@ interface IProjectBlogProps extends RouteComponentProps<IMatchParams> {
  */
 @observer
 class ProjectBlog extends React.Component<IProjectBlogProps> {
-    private rundownUrl: string =
-        `https://raw.githubusercontent.com/wejrox/${this.props.match.params.name}
-        /master/project-details/project-rundown.md`;
     @observable
     private projectRundown: string = "";
 
     constructor(props: IProjectBlogProps) {
         super(props);
-        this.getProjectRundown();
+        RepositoryApi.getProjectRundown(this.props.match.params.name)
+            .then((promise) => this.projectRundown = promise);
     }
 
     public render() {
@@ -54,18 +52,9 @@ class ProjectBlog extends React.Component<IProjectBlogProps> {
                         <h1>{this.props.match.params.name}</h1>
                     </Col>
                 </Row>
-                <Row>
-                    <ReactMarkdown source={this.projectRundown}/>
-                </Row>
+                <ReactMarkdown source={this.projectRundown}/>
             </Container>
         );
-    }
-
-    @action
-    private async getProjectRundown() {
-        this.projectRundown = await axios.get(this.rundownUrl).then((promise) => promise.data).catch((reason) => {
-            throw new Error(reason);
-        });
     }
 }
 

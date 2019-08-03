@@ -4,6 +4,7 @@ import { Row } from "reactstrap";
 import RepositoryApi from "../../repositoryApi/RepositoryApi";
 import { IRepository } from "../../repositoryApi/RepositoryTypes";
 import { observer } from "mobx-react";
+import LoadingIcon from "../../../resources/images/loader.gif";
 
 interface IGalleryProps {
     galleryEntries?: string[];
@@ -16,7 +17,7 @@ interface IGalleryProps {
 class Gallery extends React.Component<IGalleryProps> {
     public render() {
         return (
-            <Row className={"pl-3 justify-content-center"}>
+            <Row className={"justify-content-center"}>
                 {this.renderCards()}
             </Row>
         );
@@ -27,7 +28,7 @@ class Gallery extends React.Component<IGalleryProps> {
      */
     private renderCards(): JSX.Element[] {
         if (!RepositoryApi || RepositoryApi.currentRepositories.length === 0) {
-            return [];
+            return [<img src={LoadingIcon} alt={"loading..."}/>];
         }
 
         return RepositoryApi.currentRepositories.map((repository: IRepository) => {
