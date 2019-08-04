@@ -26,9 +26,9 @@ class Gallery extends React.Component<IGalleryProps> {
     /**
      * Renders a generic card. Will eventually render based on database contents.
      */
-    private renderCards(): JSX.Element[] {
+    private renderCards(): JSX.Element[] | JSX.Element {
         if (!RepositoryApi || RepositoryApi.currentRepositories.length === 0) {
-            return [<img src={LoadingIcon} alt={"loading..."}/>];
+            return <img src={LoadingIcon} alt={"loading..."}/>;
         }
 
         return RepositoryApi.currentRepositories.map((repository: IRepository) => {

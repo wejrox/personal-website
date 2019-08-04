@@ -15,25 +15,25 @@ describe("ContactForm Component", () => {
         it("Sets the first name correctly", () => {
             wrapper.find("#firstName").simulate("change", {target: {value: dummyNewValue}});
 
-            expect((wrapper.instance() as ContactForm).state.firstName).toEqual(dummyNewValue);
+            expect((wrapper.instance() as ContactForm).firstName).toEqual(dummyNewValue);
         });
 
         it("Sets the last name correctly", () => {
             wrapper.find("#lastName").simulate("change", {target: {value: dummyNewValue}});
 
-            expect((wrapper.instance() as ContactForm).state.lastName).toEqual(dummyNewValue);
+            expect((wrapper.instance() as ContactForm).lastName).toEqual(dummyNewValue);
         });
 
         it("Sets the email address correctly", () => {
             wrapper.find("#emailAddress").simulate("change", {target: {value: dummyNewValue}});
 
-            expect((wrapper.instance() as ContactForm).state.email).toEqual(dummyNewValue);
+            expect((wrapper.instance() as ContactForm).email).toEqual(dummyNewValue);
         });
 
         it("Sets the message correctly", () => {
             wrapper.find("#message").simulate("change", {target: {value: dummyNewValue}});
 
-            expect((wrapper.instance() as ContactForm).state.message).toEqual(dummyNewValue);
+            expect((wrapper.instance() as ContactForm).message).toEqual(dummyNewValue);
         });
     });
 

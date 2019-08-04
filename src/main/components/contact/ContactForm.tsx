@@ -12,16 +12,16 @@ import { observer } from "mobx-react";
 class ContactForm extends React.Component {
 
     // (Optional) First name of the person submitting the form.
-    @observable private firstName: string = "";
+    @observable public firstName: string = "";
 
     // (Optional) Last name/Surname of the person submitting the form.
-    @observable private lastName: string = "";
+    @observable public lastName: string = "";
 
     // EMail address of the person submitting the form.
-    @observable private email: string = "";
+    @observable public email: string = "";
 
     // Message to be sent to the database.
-    @observable private message: string = "";
+    @observable public message: string = "";
 
     // Whether or not the user has successfully submitted.
     @observable private submitted: boolean = false;

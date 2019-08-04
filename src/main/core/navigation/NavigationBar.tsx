@@ -16,7 +16,7 @@ import ProjectBlog from "../../pages/ProjectBlog";
 class NavigationBar extends React.Component {
 
     // Whether or not the navigation bar is open.
-    @observable private isOpen: boolean = false;
+    @observable public isOpen: boolean = false;
 
     constructor(props: object) {
         super(props);

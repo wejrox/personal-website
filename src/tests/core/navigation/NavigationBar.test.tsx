@@ -13,10 +13,10 @@ describe("NavigationBar Component", () => {
     });
 
     it("does not toggle open state if not on mobile", () => {
-        const prvOpenState: boolean = (wrapper.instance() as NavigationBar).state.isOpen;
+        const prvOpenState: boolean = (wrapper.instance() as NavigationBar).isOpen;
         (wrapper.instance() as NavigationBar).toggle();
 
         expect(toggleSpy.called).toBe(true);
-        expect((wrapper.instance() as NavigationBar).state.isOpen).toBe(prvOpenState);
+        expect((wrapper.instance() as NavigationBar).isOpen).toBe(prvOpenState);
     });
 });
