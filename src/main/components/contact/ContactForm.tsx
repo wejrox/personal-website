@@ -83,7 +83,6 @@ class ContactForm extends React.Component {
         // Prevent page refresh.
         event.preventDefault();
         this.submitted = true;
-        console.log(this.message);
     }
 }
 
