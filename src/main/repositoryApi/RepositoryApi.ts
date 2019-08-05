@@ -39,10 +39,8 @@ class RepositoryApi {
     public async getProjectRundown(projectName: string): Promise<string> {
         const rawUrl = `${this.rawGithubBase}/${projectName}/master/project-details/project-rundown.md`;
         return await axios.get(rawUrl)
-            .then((promise) => promise.data)
-            .catch((reason) => {
-                throw new Error(reason);
-            });
+            .then((promise) => promise.data ? promise.data : null)
+            .catch(() => null);
     }
 }
 

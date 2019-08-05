@@ -7,6 +7,7 @@ import { observable } from "mobx";
 import { observer } from "mobx-react";
 import ReactMarkdown from "react-markdown";
 import RepositoryApi from "../repositoryApi/RepositoryApi";
+import LoadingIcon from "../../resources/images/loader.gif";
 
 /**
  * Holds a definition for the parameters to expect when this component is routed to.
@@ -52,9 +53,32 @@ class ProjectBlog extends React.Component<IProjectBlogProps> {
                         <h1>{this.props.match.params.name}</h1>
                     </Col>
                 </Row>
-                <ReactMarkdown source={this.projectRundown}/>
+                {this.displayProjectRundown()}
             </Container>
         );
+    }
+
+    public displayProjectRundown(): JSX.Element {
+        if (this.projectRundown === null) {
+            return (
+                <Row>
+                    <p>
+                        This repository doesn't have a project rundown.
+                        Check out the repository for a better understanding of how it works.
+                    </p>
+                </Row>
+            );
+        }
+
+        if (this.projectRundown === "") {
+            return (
+                <Row className="d-flex justify-content-center">
+                    <img src={LoadingIcon} alt={"loading..."}/>
+                </Row>
+            );
+        }
+
+        return <ReactMarkdown source={this.projectRundown}/>;
     }
 }
 
