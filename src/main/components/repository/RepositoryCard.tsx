@@ -5,7 +5,7 @@ import CardTitle from "reactstrap/lib/CardTitle";
 import CardText from "reactstrap/lib/CardText";
 import CardLink from "reactstrap/lib/CardLink";
 import { GoRepo } from "react-icons/go";
-import { Button, CardFooter, CardSubtitle, Col, Row } from "reactstrap";
+import { CardFooter, CardSubtitle, Col, Row } from "reactstrap";
 import { Link } from "react-router-dom";
 
 /**
@@ -62,7 +62,10 @@ class RepositoryCard extends React.Component<IRepositoryCardProps> {
                     <CardText className={"text-muted"}>{this.props.shortDescription}</CardText>
                 </CardBody>
                 <CardFooter className={"d-flex flex-column shadow-sm p-0"}>
-                    <Button className={"rounded-bottom d-flex flex-column"}>Read more</Button>
+                    <Link to={`/projects/${this.props.name}`}
+                          className={"btn btn-secondary rounded-0 rounded-br rounded-bl d-flex flex-column"}>
+                        Read more
+                    </Link>
                 </CardFooter>
             </Card>
         );

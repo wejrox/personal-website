@@ -3,10 +3,9 @@ import axios, { AxiosRequestConfig } from "axios";
 import { IRepositories } from "./RepositoryTypes";
 
 class RepositoryApi {
-    public readonly rawGithubBase: string = "https://raw.githubusercontent.com/wejrox";
-
     @observable
     public currentRepositories: IRepositories = [];
+    private readonly rawGithubBase: string = "https://raw.githubusercontent.com/wejrox";
     private readonly endpointBase: string = "https://api.github.com/users/wejrox/repos";
     private readonly headers: AxiosRequestConfig = {
         headers: {
@@ -29,8 +28,8 @@ class RepositoryApi {
 
     /**
      * Gets the contents of the rundown document from GitHub's raw repository.
-     * Each repository should contain a project rundown as it provides information about the reason behind the projects
-     * inception.
+     * Each repository should contain a project rundown as it provides information about the reason behind the project's
+     * inception and gives insight into the thought process behind it.
      *
      * @param {string} projectName  Name of the project as it appears in the GitHub URL.
      * @return {Promise<string>}  Contents of the rundown document.
