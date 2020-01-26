@@ -1,0 +1,50 @@
+pipeline 
+{
+    agent any
+    stages 
+    {
+        stage("NPM Install")
+        {
+            steps 
+            {
+                npm install
+            }
+        }
+
+        // Run tests.
+        stage("App tests")
+        {
+            steps 
+            {
+                npm run test:server
+            }
+        }
+
+        // Build.
+        stage("App build")
+        {
+            steps 
+            {
+                npm run build
+            }
+        }
+
+        // Run deploy.
+        stage("App deploy")
+        {
+            steps
+            {
+                checkout([
+                    $class: "GitSCM",
+                    branches: [[name: "*/master"]],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'AutomatedDeployment']],
+                    submoduleCfg: [], 
+                    userRemoteConfigs: [[credentialsId: "<gitCredentials>", url: "https://github.com/wejrox/AutomatedDeployment"]]
+                ])
+                
+                sh "${WORKSPACE}/AutomatedDeployment/deployment/personal-website/deploy.yml"
+            }
+        }
+    }
+}

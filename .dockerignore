@@ -1,0 +1,6 @@
+# Ignore everything
+*
+
+# Allow build and server js
+!/build/**
+!/environment/**
