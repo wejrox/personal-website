@@ -1,6 +1,8 @@
 # Ignore everything
 *
 
-# Allow build and server js
-!/build/**
-!/environment/**
+# Allow files that are required for a docker build.
+!/deployment
+!/package*.json
+!/public
+!/src

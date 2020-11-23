@@ -1,4 +1,5 @@
 # Personal website
+[![Build Status](https://travis-ci.com/wejrox/personal-website.svg?branch=master)](https://travis-ci.com/wejrox/personal-website)  
 A website which showcases my projects and the thought process that went into creating them.
 
 ## Available Scripts

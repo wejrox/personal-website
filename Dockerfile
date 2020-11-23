@@ -10,11 +10,16 @@ FROM $build_base_image AS builder
 
 WORKDIR /opt/build
 
+# Copy in the public aspects first since they shouldn't change often.
+COPY public ./
 # Copy in dependency resolution files.
 COPY package*.json ./
 
 # Install NPM dependencies. Execute this before copy to ensure that caching occurs.
 RUN npm ci
+
+# Copy in the public and source folders for building
+COPY src ./
 
 # Build the site into static js/html.
 RUN npm run build
