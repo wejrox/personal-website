@@ -1,7 +1,6 @@
 language: node_js
 node_js:
   - 14.3
-cache: npm
 sudo: required
 services:
   - docker
@@ -9,16 +8,20 @@ services:
 jobs:
   include:
     - stage: Linting
+      cache: npm
       script:
         - npm run lint
     - stage: Tests
+      cache: npm
       script:
         - npm run test:server
     - stage: Docker image dry build
+      cache: npm
       if: type = pull_request
       script:
         - docker build . -t $DOCKER_IMAGE_NAME:$TRAVIS_BUILD_NUMBER
     - stage: Docker image deploy
+      cache: npm
       if: branch = master
       script:
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
