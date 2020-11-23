@@ -6,9 +6,6 @@ sudo: required
 services:
   - docker
 
-before_script:
-  - npm ci
-
 jobs:
   include:
     - stage: Linting
@@ -25,5 +22,5 @@ jobs:
       if: branch = master
       script:
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - docker build . -t $DOCKER_USER/$DOCKER_IMAGE_NAME:latest
-        - docker push $DOCKER_USER/$DOCKER_IMAGE_NAME:latest
+        - docker build . -t $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
+        - docker push $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
