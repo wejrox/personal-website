@@ -1,7 +1,8 @@
 language: node_js
 node_js: 14.3
 cache: npm
-sudo: required
+os: linux
+dist: xenial
 services:
   - docker
 
