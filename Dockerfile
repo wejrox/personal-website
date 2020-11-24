@@ -8,7 +8,7 @@ ARG deploy_base_image="nginx:1.16.1-alpine"
 # trim the fat.
 FROM $build_base_image AS builder
 
-WORKDIR /opt/build
+WORKDIR /opt/workdir
 
 # Copy in dependency resolution files.
 COPY package*.json ./
@@ -33,7 +33,7 @@ RUN rm -rf /usr/share/nginx/html/*
 
 # Copy in the required files we built in the previous image.
 # Only the Dist folder is required as everything is compiled into there on build.
-COPY --from=builder /opt/build /usr/share/nginx/html
+COPY --from=builder /opt/workdir/build /usr/share/nginx/html
 
 # Copy in our configuration, which is applied on startup.
 COPY ./deployment/server.conf /etc/nginx/conf.d/server.conf
