@@ -4,8 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {App} from "./main/App";
 import RepositoryApi from "./main/repositoryApi/RepositoryApi";
 import {Global} from "@emotion/core";
-import {bootstrapOverrides} from "./syles/bootstrapOverrides";
-import {baseStyle} from "./syles/baseStyle";
+import {bootstrapOverrides} from "./styles/bootstrapOverrides";
+import {baseStyle} from "./styles/baseStyle";
 
 RepositoryApi.updateRepositories();
 
