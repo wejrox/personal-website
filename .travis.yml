@@ -11,6 +11,6 @@ script:
 
 deploy:
   provider: script
-  script: ./deployment/build-images.sh
+  script: bash deployment/build-images.sh
   on:
     condition: $TRAVIS_BRANCH = "master" || $TRAVIS_PULL_REQUEST = "true"
