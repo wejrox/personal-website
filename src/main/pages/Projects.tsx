@@ -9,7 +9,6 @@ class Projects extends React.Component {
         return (
             <>
                 <Container>
-                    <div className={"navbar-compensation"}/>
                     <Row className={"mb-4"}>
                         <Col className={"d-flex justify-content-center"}>
                             <h1>Projects</h1>

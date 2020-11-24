@@ -6,3 +6,5 @@
 !/package*.json
 !/public
 !/src
+!/config-overrides.js
+!/tsconfig.json

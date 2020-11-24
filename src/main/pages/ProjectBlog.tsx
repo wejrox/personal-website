@@ -1,10 +1,10 @@
 import * as React from "react";
-import { RouteComponentProps } from "react-router-dom";
+import {RouteComponentProps} from "react-router-dom";
 import Container from "reactstrap/lib/Container";
 import Row from "reactstrap/lib/Row";
 import Col from "reactstrap/lib/Col";
-import { observable } from "mobx";
-import { observer } from "mobx-react";
+import {observable} from "mobx";
+import {observer} from "mobx-react";
 import ReactMarkdown from "react-markdown";
 import RepositoryApi from "../repositoryApi/RepositoryApi";
 import LoadingIcon from "../../resources/images/loader.gif";
@@ -37,17 +37,16 @@ interface IProjectBlogProps extends RouteComponentProps<IMatchParams> {
 class ProjectBlog extends React.Component<IProjectBlogProps> {
     @observable
     private projectRundown: string = "";
-
+    
     constructor(props: IProjectBlogProps) {
         super(props);
         RepositoryApi.getProjectRundown(this.props.match.params.name)
             .then((promise) => this.projectRundown = promise);
     }
-
+    
     public render() {
         return (
             <Container>
-                <div className={"navbar-compensation"}/>
                 <Row className={"mb-4"}>
                     <Col className={"d-flex justify-content-center"}>
                         <h1>{this.props.match.params.name}</h1>
@@ -57,7 +56,7 @@ class ProjectBlog extends React.Component<IProjectBlogProps> {
             </Container>
         );
     }
-
+    
     public displayProjectRundown(): JSX.Element {
         if (this.projectRundown === null) {
             return (
@@ -69,7 +68,7 @@ class ProjectBlog extends React.Component<IProjectBlogProps> {
                 </Row>
             );
         }
-
+        
         if (this.projectRundown === "") {
             return (
                 <Row className="d-flex justify-content-center">
@@ -77,7 +76,7 @@ class ProjectBlog extends React.Component<IProjectBlogProps> {
                 </Row>
             );
         }
-
+        
         return <ReactMarkdown source={this.projectRundown}/>;
     }
 }

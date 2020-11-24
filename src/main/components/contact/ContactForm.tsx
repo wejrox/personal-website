@@ -1,7 +1,8 @@
 import * as React from "react";
-import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
-import { observable } from "mobx";
-import { observer } from "mobx-react";
+import {Button, Col, Form, FormGroup, Input, Label, Row} from "reactstrap";
+import {observable} from "mobx";
+import {observer} from "mobx-react";
+import {css} from "@emotion/core";
 
 /**
  * A form which contains a first and last name field, alongside an email and message field which will submit a message
@@ -10,28 +11,28 @@ import { observer } from "mobx-react";
  */
 @observer
 class ContactForm extends React.Component {
-
+    
     // (Optional) First name of the person submitting the form.
     @observable public firstName: string = "";
-
+    
     // (Optional) Last name/Surname of the person submitting the form.
     @observable public lastName: string = "";
-
+    
     // EMail address of the person submitting the form.
     @observable public email: string = "";
-
+    
     // Message to be sent to the database.
     @observable public message: string = "";
-
+    
     // Whether or not the user has successfully submitted.
     @observable private submitted: boolean = false;
-
+    
     constructor(props: {}) {
         super(props);
-
+        
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
+    
     public render() {
         return (
             <Form onSubmit={this.handleSubmit}>
@@ -62,7 +63,8 @@ class ContactForm extends React.Component {
                            onChange={(e) => this.message = e.target.value}/>
                 </FormGroup>
                 {this.submitted &&
-                <div className={"d-flex pb-3 success-message justify-content-center"}>
+                <div className={"d-flex pb-3 justify-content-center"}
+                     css={css`color: limegreen; font-weight: bold;`}>
                     Message sent.
                 </div>
                 }
@@ -70,7 +72,7 @@ class ContactForm extends React.Component {
             </Form>
         );
     }
-
+    
     /**
      * TODO: Database connection and submission.
      * Handles the submission of the contact form.
@@ -79,7 +81,7 @@ class ContactForm extends React.Component {
      * @param {React.FormEvent<HTMLFormElement>} event  The form event that triggered the function.
      */
     public handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-
+        
         // Prevent page refresh.
         event.preventDefault();
         this.submitted = true;

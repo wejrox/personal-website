@@ -1,3 +1,6 @@
+import {css} from "@emotion/core";
+
+export const baseStyle = css`
 body {
   position: relative;
   margin: 0;
@@ -11,19 +14,17 @@ body {
   min-height: 100%;
   padding-bottom: 6rem;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
   monospace;
 }
-
 html {
   height: 100%;
   box-sizing: border-box;
 }
-
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
+`;

@@ -4,9 +4,10 @@ import CardBody from "reactstrap/lib/CardBody";
 import CardTitle from "reactstrap/lib/CardTitle";
 import CardText from "reactstrap/lib/CardText";
 import CardLink from "reactstrap/lib/CardLink";
-import { GoRepo } from "react-icons/go";
-import { CardFooter, CardSubtitle, Col, Row } from "reactstrap";
-import { Link } from "react-router-dom";
+import {GoRepo} from "react-icons/go";
+import {CardFooter, CardSubtitle, Col, Row} from "reactstrap";
+import {Link} from "react-router-dom";
+import {css} from "@emotion/core";
 
 /**
  * @property {string} id                ID of the repository in the database.
@@ -33,10 +34,10 @@ class RepositoryCard extends React.Component<IRepositoryCardProps> {
     private image: string =
         `https://raw.githubusercontent.com/wejrox/${this.props.name}
         /master/project-details/screenshot.png`;
-
+    
     public render() {
         return (
-            <Card className={"repo-card shadow-sm"}>
+            <Card className={"shadow-sm"} css={css`max-width: 16rem; margin: 1rem;`}>
                 <CardBody>
                     <Row>
                         <Col>
