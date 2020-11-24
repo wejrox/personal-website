@@ -16,7 +16,7 @@ COPY public ./
 COPY package*.json ./
 
 # Install NPM dependencies. Execute this before copy to ensure that caching occurs.
-COPY node_modules ./
+RUN npm ci
 
 # Copy in the public and source folders for building
 COPY src ./
