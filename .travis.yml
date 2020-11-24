@@ -13,4 +13,4 @@ deploy:
   provider: script
   script: ./deployment/build-images.sh
   on:
-    condition: (type = pull_request) OR (branch = master)
+    condition: $TRAVIS_BRANCH = "master" || $TRAVIS_PULL_REQUEST = "true"
