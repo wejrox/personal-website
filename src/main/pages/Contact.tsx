@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Col, Container, Row } from "reactstrap";
+import {Col, Container, Row} from "reactstrap";
 import ContactForm from "../components/contact/ContactForm";
 import ContactInfoRow from "../components/contact/ContactInfoRow";
 
@@ -10,7 +10,6 @@ class Contact extends React.Component {
     public render() {
         return (
             <Container className={"pb-3"}>
-                <div className={"navbar-compensation"}/>
                 <Row className={"mb-4"}>
                     <Col className={"d-flex justify-content-center"}>
                         <h1>Contact</h1>
