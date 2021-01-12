@@ -1,8 +1,11 @@
 language: node_js
 node_js: 14.3
-cache: npm
 os: linux
 dist: xenial
+cache:
+  directories:
+    - node_modules
+
 services:
   - docker
 
